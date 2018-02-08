@@ -72,7 +72,6 @@ public class DataSource {
             dbUrl = properties.getProperty("dburl");
             user = properties.getProperty("user");
             password = properties.getProperty("password");
-            //System.out.println("File is open.");
             try {
                 connection = DriverManager.getConnection(dbUrl, user, password);
                 queryVegetableByName = connection.prepareStatement(STM_DATA_VEGETABLE);
@@ -276,6 +275,5 @@ public class DataSource {
                 }
             }
         }
-
     }
 }

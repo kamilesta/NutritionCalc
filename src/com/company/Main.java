@@ -58,7 +58,7 @@ public class Main {
                 case 3:
                     System.out.println("Choose meat that you want your meal with from: ");
                     List<String> meatList = DataSource.selectAllFrom(DataSource.getConnection(), DataSource.MEATS_TABLE);
-                    for (String meat : meatList){
+                    for (String meat : meatList) {
                         System.out.println("\t" + meat);
                     }
                     String chosenMeal = Food.foodName(DataSource.MEATS_TABLE);
@@ -86,9 +86,9 @@ public class Main {
         System.out.println("\nChoose your option:\n" +
                 "\t1 - Print instructions\n" +
                 "\t2 - Compose your own meal\n" +
-                "\t3 - Let us suggest you optimal meal with your favourite meat (TODO)\n" +
+                "\t3 - Let us suggest you optimal meal with your favourite meat\n" +
+                "\t4 - Add new food (TODO)\n" +
                 "\t0 - Quit\n");
-
     }
 
     public static void composeMeal(DataSource source,
@@ -102,6 +102,4 @@ public class Main {
         meals.add(newVegetable);
         meals.add(newAddition);
     }
-
-
 }
