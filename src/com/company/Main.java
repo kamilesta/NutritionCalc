@@ -50,19 +50,24 @@ public class Main {
 
                     composeMeal(source, meatType, meatGram, vegetableType, vegetableGram, additionType, additionsGram);
                     System.out.println("Your meal is composed of: ");
-                    Food.showMealList(meals);
-                    Food.sumUpChosenMeal(meals);
+                    showMealList(meals);
+                    sumUpChosenMeal(meals);
 
                     break;
 
                 case 3:
-                    System.out.println("Choose meat that you want your meal with from: ");
+                    System.out.println("Choose meat that you want your meal with from. Do you want also meal with lowest calories? ");
+
+                    ;
                     List<String> meatList = DataSource.selectAllFrom(DataSource.getConnection(), DataSource.MEATS_TABLE);
                     for (String meat : meatList) {
                         System.out.println("\t" + meat);
                     }
                     String chosenMeal = Food.foodName(DataSource.MEATS_TABLE);
-                    meals = source.chooseMealByMeat(chosenMeal);
+                    scanner.nextLine();
+                    System.out.println("Do you choose lowest calories?");
+                    String sortOrder = scanner.nextLine();
+                    meals = source.chooseMealByMeat(chosenMeal, sortOrder);
                     System.out.println("We propose meal of:");
                     showMealList(meals);
                     sumUpChosenMeal(meals);

@@ -47,22 +47,39 @@ public class DataSource {
             "SELECT * FROM " + ADDITIONS_TABLE +
                     " WHERE " + NAME_COLUMN + " = ?";
 
+    public static final String VEGETABLES_CAL_PER_GRAM = "vegCalcPerGram";
+    public static final String QUERY_VEGETABLES_CAL_PER_GRAM =
+            VEGETABLES_TABLE + "." + CALORIES_COLUMN + " / " + VEGETABLES_TABLE + "." + GRAMS_COLUMN +
+                    " AS " + VEGETABLES_CAL_PER_GRAM;
+
+    public static final String ADDITIONS_CAL_PER_GRAM = "addCalcPerGram";
+    public static final String QUERY_ADDITIONS_CAL_PER_GRAM =
+            ADDITIONS_TABLE + "." + CALORIES_COLUMN + " / " + ADDITIONS_TABLE + "." + GRAMS_COLUMN +
+                    " AS " + ADDITIONS_CAL_PER_GRAM;
+
     public static final String STM_QUERY_MEAL_BY_MEAT =
             "SELECT " + MEATS_TABLE + "." + NAME_COLUMN + ", "
                     + VEGETABLES_TABLE + "." + NAME_COLUMN + ", "
-                    + ADDITIONS_TABLE + "." + NAME_COLUMN +
+                    + ADDITIONS_TABLE + "." + NAME_COLUMN + ", "
+                    + QUERY_VEGETABLES_CAL_PER_GRAM + ", "
+                    + QUERY_ADDITIONS_CAL_PER_GRAM +
                     " FROM " + MEATS_TABLE +
                     " INNER JOIN " + VEGETABLES_TABLE + " ON " + MEATS_TABLE + "." + ID_COLUMN +
                     " = " + VEGETABLES_TABLE + "." + MEAL_ID_COLUMN +
                     " INNER JOIN " + ADDITIONS_TABLE + " ON " + MEATS_TABLE + "." + ID_COLUMN +
                     " = " + ADDITIONS_TABLE + "." + MEAL_ID_COLUMN +
-                    " WHERE " + MEATS_TABLE + "." + NAME_COLUMN + " = ?";
+                    " WHERE " + MEATS_TABLE + "." + NAME_COLUMN + " = ";
+
+    public static final String QUERY_MEAL_BY_MEAT_SORT =
+            " ORDER BY " + VEGETABLES_CAL_PER_GRAM + " + " + ADDITIONS_CAL_PER_GRAM + " ";
+    public static final String QUERY_MEAL_BY_MEAT_LIMIT =
+            " LIMIT 1";
 
 
     private PreparedStatement queryVegetableByName;
     private PreparedStatement queryMeatByName;
     private PreparedStatement queryAdditionByName;
-    private PreparedStatement queryMealByMeat;
+    //private PreparedStatement queryMealByMeat;
 
 
     public boolean open() {
@@ -77,7 +94,7 @@ public class DataSource {
                 queryVegetableByName = connection.prepareStatement(STM_DATA_VEGETABLE);
                 queryMeatByName = connection.prepareStatement(STM_DATA_MEATS);
                 queryAdditionByName = connection.prepareStatement(STM_DATA_ADDITIONS);
-                queryMealByMeat = connection.prepareStatement(STM_QUERY_MEAL_BY_MEAT);
+                //queryMealByMeat = connection.prepareStatement(STM_QUERY_MEAL_BY_MEAT + );
 
                 return true;
             } catch (SQLException e) {
@@ -98,7 +115,7 @@ public class DataSource {
             if (queryVegetableByName != null) queryVegetableByName.close();
             if (queryMeatByName != null) queryMeatByName.close();
             if (queryAdditionByName != null) queryAdditionByName.close();
-            if (queryMealByMeat != null) queryMealByMeat.close();
+            //if (queryMealByMeat != null) queryMealByMeat.close();
 
             return true;
         } catch (SQLException e) {
@@ -235,15 +252,22 @@ public class DataSource {
         }
     }
 
-    public List<Food> chooseMealByMeat(String name) {
+    public List<Food> chooseMealByMeat(String name, String sortOrder) {
         List<Food> foodList = new ArrayList<>();
-        ResultSet resultSet = null;
+        String chosenSortOrder = chooseSortOrder(sortOrder);
+        StringBuilder queryBuilder = new StringBuilder(STM_QUERY_MEAL_BY_MEAT);
+        queryBuilder.append("\"");
+        queryBuilder.append(name);
+        queryBuilder.append("\"");
+        queryBuilder.append(QUERY_MEAL_BY_MEAT_SORT);
+        queryBuilder.append(chosenSortOrder);
+        queryBuilder.append(QUERY_MEAL_BY_MEAT_LIMIT);
+        System.out.println(queryBuilder.toString());
         String meatName = "";
         String vegetableName = "";
         String additionName = "";
-        try {
-            queryMealByMeat.setString(1, name);
-            resultSet = queryMealByMeat.executeQuery();
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(queryBuilder.toString())) {
             while (resultSet.next()) {
                 meatName = resultSet.getString(1);
                 vegetableName = resultSet.getString(2);
@@ -266,14 +290,13 @@ public class DataSource {
             System.out.println("chooseMealByMeat error:");
             e.printStackTrace();
             return null;
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+    }
+
+    public static String chooseSortOrder(String sortOrder) {
+        if (sortOrder.equalsIgnoreCase("y") || sortOrder.equalsIgnoreCase("yes")) {
+            return "ASC";
+        }
+        return "DESC";
     }
 }
