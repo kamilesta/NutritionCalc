@@ -75,12 +75,16 @@ public class DataSource {
     public static final String QUERY_MEAL_BY_MEAT_LIMIT =
             " LIMIT 1";
 
+    public static final String STM_ADD_MEAT =
+            "INSERT INTO " + MEATS_TABLE + " ( " + NAME_COLUMN + ", " + COUNTRY_COLUMN + ", " + GRAMS_COLUMN + ", " +
+                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ") " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+
 
     private PreparedStatement queryVegetableByName;
     private PreparedStatement queryMeatByName;
     private PreparedStatement queryAdditionByName;
-    //private PreparedStatement queryMealByMeat;
-
+    private PreparedStatement queryAddMeat;
 
     public boolean open() {
         Properties properties = new Properties();
@@ -94,8 +98,7 @@ public class DataSource {
                 queryVegetableByName = connection.prepareStatement(STM_DATA_VEGETABLE);
                 queryMeatByName = connection.prepareStatement(STM_DATA_MEATS);
                 queryAdditionByName = connection.prepareStatement(STM_DATA_ADDITIONS);
-                //queryMealByMeat = connection.prepareStatement(STM_QUERY_MEAL_BY_MEAT + );
-
+                queryAddMeat = connection.prepareStatement(STM_ADD_MEAT, Statement.RETURN_GENERATED_KEYS);
                 return true;
             } catch (SQLException e) {
                 System.out.println("Opening connection error: ");
@@ -115,7 +118,7 @@ public class DataSource {
             if (queryVegetableByName != null) queryVegetableByName.close();
             if (queryMeatByName != null) queryMeatByName.close();
             if (queryAdditionByName != null) queryAdditionByName.close();
-            //if (queryMealByMeat != null) queryMealByMeat.close();
+            if (queryAddMeat != null) queryAddMeat.close();
 
             return true;
         } catch (SQLException e) {
@@ -292,10 +295,36 @@ public class DataSource {
         }
     }
 
-    public static String chooseSortOrder(String sortOrder) {
-        if (sortOrder.equalsIgnoreCase("y") || sortOrder.equalsIgnoreCase("yes")) {
+    private static String chooseSortOrder(String sortOrder) {
+        if (sortOrder.matches("y(es)?")) {
             return "ASC";
         }
         return "DESC";
+    }
+
+    public int addMeat(String name, String country, int grams, int calories, int protein, int carb)
+            throws SQLException {
+        queryMeatByName.setString(1, name);
+        ResultSet resultSet = queryMeatByName.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        queryAddMeat.setString(1, name);
+        queryAddMeat.setString(2, country);
+        queryAddMeat.setInt(3, grams);
+        queryAddMeat.setInt(4, calories);
+        queryAddMeat.setInt(5, protein);
+        queryAddMeat.setInt(6, carb);
+
+        int rowsAffected = queryAddMeat.executeUpdate();
+        if (rowsAffected != 1) {
+            throw new SQLException("Cannot add meat");
+        }
+        ResultSet generatedKey = queryAddMeat.getGeneratedKeys();
+        if (generatedKey.next()) {
+            return generatedKey.getInt(1);
+        } else {
+            throw new SQLException("Cannot get id of meats");
+        }
     }
 }

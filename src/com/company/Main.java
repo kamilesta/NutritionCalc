@@ -2,6 +2,7 @@ package com.company;
 
 import model.*;
 
+import java.sql.SQLException;
 import java.util.*;
 
 import static model.Food.*;
@@ -17,8 +18,14 @@ public class Main {
             System.out.println("Connection not opened.");
             return;
         }
-        System.out.println("=| FoodCalculator |=");
 
+        try {
+            source.addMeat("Kolejne miecho", "Polandia", 1, 1, 1, 1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("=| FoodCalculator |=");
         boolean quit = false;
         int option;
         printInstructions();
