@@ -80,11 +80,17 @@ public class DataSource {
                     CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ") " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
 
+    public static final String STM_ADD_VEGETABLE =
+            "INSERT INTO " + VEGETABLES_TABLE + " ( " + NAME_COLUMN + ", " + COUNTRY_COLUMN + ", " + GRAMS_COLUMN + ", " +
+                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", "+ MEAL_ID_COLUMN + ") " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
 
     private PreparedStatement queryVegetableByName;
     private PreparedStatement queryMeatByName;
     private PreparedStatement queryAdditionByName;
     private PreparedStatement queryAddMeat;
+    private PreparedStatement queryAddVegetable;
 
     public boolean open() {
         Properties properties = new Properties();
@@ -99,6 +105,7 @@ public class DataSource {
                 queryMeatByName = connection.prepareStatement(STM_DATA_MEATS);
                 queryAdditionByName = connection.prepareStatement(STM_DATA_ADDITIONS);
                 queryAddMeat = connection.prepareStatement(STM_ADD_MEAT, Statement.RETURN_GENERATED_KEYS);
+                queryAddVegetable = connection.prepareStatement(STM_ADD_VEGETABLE, Statement.RETURN_GENERATED_KEYS);
                 return true;
             } catch (SQLException e) {
                 System.out.println("Opening connection error: ");
@@ -119,6 +126,7 @@ public class DataSource {
             if (queryMeatByName != null) queryMeatByName.close();
             if (queryAdditionByName != null) queryAdditionByName.close();
             if (queryAddMeat != null) queryAddMeat.close();
+            if (queryAddVegetable != null) queryAddVegetable.close();
 
             return true;
         } catch (SQLException e) {
@@ -325,6 +333,33 @@ public class DataSource {
             return generatedKey.getInt(1);
         } else {
             throw new SQLException("Cannot get id of meats");
+        }
+    }
+
+    public int addVegetable(String name, String country, int grams, int calories, int protein, int carb, int mealId)
+            throws SQLException {
+        queryVegetableByName.setString(1, name);
+        ResultSet resultSet = queryVegetableByName.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        queryAddVegetable.setString(1, name);
+        queryAddVegetable.setString(2, country);
+        queryAddVegetable.setInt(3, grams);
+        queryAddVegetable.setInt(4, calories);
+        queryAddVegetable.setInt(5, protein);
+        queryAddVegetable.setInt(6, carb);
+        queryAddVegetable.setInt(7, mealId);
+
+        int rowsAffected = queryAddVegetable.executeUpdate();
+        if (rowsAffected != 1) {
+            throw new SQLException("Cannot add vegetable");
+        }
+        ResultSet generatedKey = queryAddVegetable.getGeneratedKeys();
+        if (generatedKey.next()) {
+            return generatedKey.getInt(1);
+        } else {
+            throw new SQLException("Cannot get id of vegetable");
         }
     }
 }
