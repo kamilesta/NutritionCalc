@@ -85,12 +85,18 @@ public class DataSource {
                     CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", "+ MEAL_ID_COLUMN + ") " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+    public static final String STM_ADD_ADDITION =
+            "INSERT INTO " + ADDITIONS_TABLE + " ( " + NAME_COLUMN + ", " + COUNTRY_COLUMN + ", " + GRAMS_COLUMN + ", " +
+                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", "+ MEAL_ID_COLUMN + ") " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
 
     private PreparedStatement queryVegetableByName;
     private PreparedStatement queryMeatByName;
     private PreparedStatement queryAdditionByName;
     private PreparedStatement queryAddMeat;
     private PreparedStatement queryAddVegetable;
+    private PreparedStatement queryAddAddition;
 
     public boolean open() {
         Properties properties = new Properties();
@@ -106,6 +112,7 @@ public class DataSource {
                 queryAdditionByName = connection.prepareStatement(STM_DATA_ADDITIONS);
                 queryAddMeat = connection.prepareStatement(STM_ADD_MEAT, Statement.RETURN_GENERATED_KEYS);
                 queryAddVegetable = connection.prepareStatement(STM_ADD_VEGETABLE, Statement.RETURN_GENERATED_KEYS);
+                queryAddAddition = connection.prepareStatement(STM_ADD_ADDITION, Statement.RETURN_GENERATED_KEYS);
                 return true;
             } catch (SQLException e) {
                 System.out.println("Opening connection error: ");
@@ -127,6 +134,7 @@ public class DataSource {
             if (queryAdditionByName != null) queryAdditionByName.close();
             if (queryAddMeat != null) queryAddMeat.close();
             if (queryAddVegetable != null) queryAddVegetable.close();
+            if (queryAddAddition != null) queryAddAddition.close();
 
             return true;
         } catch (SQLException e) {
@@ -356,6 +364,33 @@ public class DataSource {
             throw new SQLException("Cannot add vegetable");
         }
         ResultSet generatedKey = queryAddVegetable.getGeneratedKeys();
+        if (generatedKey.next()) {
+            return generatedKey.getInt(1);
+        } else {
+            throw new SQLException("Cannot get id of vegetable");
+        }
+    }
+
+    public int addAddition(String name, String country, int grams, int calories, int protein, int carb, int mealId)
+            throws SQLException {
+        queryAdditionByName.setString(1, name);
+        ResultSet resultSet = queryAdditionByName.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        queryAddAddition.setString(1, name);
+        queryAddAddition.setString(2, country);
+        queryAddAddition.setInt(3, grams);
+        queryAddAddition.setInt(4, calories);
+        queryAddAddition.setInt(5, protein);
+        queryAddAddition.setInt(6, carb);
+        queryAddAddition.setInt(7, mealId);
+
+        int rowsAffected = queryAddAddition.executeUpdate();
+        if (rowsAffected != 1) {
+            throw new SQLException("Cannot add vegetable");
+        }
+        ResultSet generatedKey = queryAddAddition.getGeneratedKeys();
         if (generatedKey.next()) {
             return generatedKey.getInt(1);
         } else {

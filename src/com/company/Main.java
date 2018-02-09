@@ -22,6 +22,7 @@ public class Main {
         try {
             source.addMeat("Kolejne miecho", "Polandia", 1, 1, 1, 1);
             source.addVegetable("Jarzynka", "Polandia", 1, 1, 1, 1, 1);
+            source.addAddition("Dodateczek", "Polandia", 1, 1, 1, 1, 1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
