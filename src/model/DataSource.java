@@ -262,7 +262,6 @@ public class DataSource {
         queryBuilder.append(QUERY_MEAL_BY_MEAT_SORT);
         queryBuilder.append(chosenSortOrder);
         queryBuilder.append(QUERY_MEAL_BY_MEAT_LIMIT);
-        System.out.println(queryBuilder.toString());
         String meatName = "";
         String vegetableName = "";
         String additionName = "";
