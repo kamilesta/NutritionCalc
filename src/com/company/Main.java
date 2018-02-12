@@ -77,7 +77,6 @@ public class Main {
                     System.out.println("Do you choose lowest calories?");
                     String sortOrder = scanner.nextLine();
                     meals = source.chooseMealByMeat(chosenMeal, sortOrder);
-                    System.out.println("We propose meal of:");
                     showMealList(meals);
                     sumUpChosenMeal(meals);
                     break;

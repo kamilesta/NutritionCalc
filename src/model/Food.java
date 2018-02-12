@@ -104,6 +104,11 @@ public class Food {
     }
 
     public static void showMealList(List<Food> foodList){
+        if (foodList == null){
+            System.out.println("No meal assigned to this meat.");
+            return;
+        }
+        System.out.println("We propose meal of:");
         for (Food food : foodList){
             if (food.getName() != null) {
                 System.out.println("\t- " + food.getName());
@@ -112,6 +117,9 @@ public class Food {
     }
 
     public static void sumUpChosenMeal(List<Food> foodList){
+        if (foodList == null){
+            return;
+        }
         double calories = 0;
         double protein = 0;
         double carb = 0;

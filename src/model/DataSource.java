@@ -291,6 +291,9 @@ public class DataSource {
                 vegetableName = resultSet.getString(2);
                 additionName = resultSet.getString(3);
             }
+            if (meatName.equals("")){
+                return null;
+            }
             System.out.println("How much " + meatName + " do you want?");
             Meat newMeat = chooseMeatByName(meatName, Food.foodWeight());
 
