@@ -19,14 +19,6 @@ public class Main {
             return;
         }
 
-//        try {
-//            source.addMeat("Kolejne miecho", "Polandia", 1, 1, 1, 1);
-//            source.addVegetable("Jarzynka", "Polandia", 1, 1, 1, 1, 1);
-//            source.addAddition("Dodateczek", "Polandia", 1, 1, 1, 1, 1);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
         System.out.println("=| FoodCalculator |=");
         boolean quit = false;
         int option;
@@ -61,13 +53,9 @@ public class Main {
                     System.out.println("Your meal is composed of: ");
                     showMealList(meals);
                     sumUpChosenMeal(meals);
-
                     break;
-
                 case 3:
                     System.out.println("Choose meat that you want your meal with from. Do you want also meal with lowest calories? ");
-
-                    ;
                     List<String> meatList = DataSource.selectAllFrom(DataSource.getConnection(), DataSource.MEATS_TABLE);
                     for (String meat : meatList) {
                         System.out.println("\t" + meat);
@@ -107,7 +95,7 @@ public class Main {
                 "\t1 - Print instructions\n" +
                 "\t2 - Compose your own meal\n" +
                 "\t3 - Let us suggest you optimal meal with your favourite meat\n" +
-                "\t4 - Add new food (TODO)\n" +
+                "\t4 - Add new food\n" +
                 "\t0 - Quit\n");
     }
 
