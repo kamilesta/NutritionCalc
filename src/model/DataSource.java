@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class DataSource {
 
@@ -321,7 +322,7 @@ public class DataSource {
         return "DESC";
     }
 
-    public int addMeat(String name, String country, int grams, int calories, int protein, int carb)
+    private int addMeat(String name, String country, double grams, double calories, double protein, double carb)
             throws SQLException {
         queryMeatByName.setString(1, name);
         ResultSet resultSet = queryMeatByName.executeQuery();
@@ -330,10 +331,10 @@ public class DataSource {
         }
         queryAddMeat.setString(1, name);
         queryAddMeat.setString(2, country);
-        queryAddMeat.setInt(3, grams);
-        queryAddMeat.setInt(4, calories);
-        queryAddMeat.setInt(5, protein);
-        queryAddMeat.setInt(6, carb);
+        queryAddMeat.setDouble(3, grams);
+        queryAddMeat.setDouble(4, calories);
+        queryAddMeat.setDouble(5, protein);
+        queryAddMeat.setDouble(6, carb);
 
         int rowsAffected = queryAddMeat.executeUpdate();
         if (rowsAffected != 1) {
@@ -347,7 +348,7 @@ public class DataSource {
         }
     }
 
-    public int addVegetable(String name, String country, int grams, int calories, int protein, int carb, int mealId)
+    private int addVegetable(String name, String country, double grams, double calories, double protein, double carb, double mealId)
             throws SQLException {
         queryVegetableByName.setString(1, name);
         ResultSet resultSet = queryVegetableByName.executeQuery();
@@ -356,11 +357,11 @@ public class DataSource {
         }
         queryAddVegetable.setString(1, name);
         queryAddVegetable.setString(2, country);
-        queryAddVegetable.setInt(3, grams);
-        queryAddVegetable.setInt(4, calories);
-        queryAddVegetable.setInt(5, protein);
-        queryAddVegetable.setInt(6, carb);
-        queryAddVegetable.setInt(7, mealId);
+        queryAddVegetable.setDouble(3, grams);
+        queryAddVegetable.setDouble(4, calories);
+        queryAddVegetable.setDouble(5, protein);
+        queryAddVegetable.setDouble(6, carb);
+        queryAddVegetable.setDouble(7, mealId);
 
         int rowsAffected = queryAddVegetable.executeUpdate();
         if (rowsAffected != 1) {
@@ -374,7 +375,7 @@ public class DataSource {
         }
     }
 
-    public int addAddition(String name, String country, int grams, int calories, int protein, int carb, int mealId)
+    private int addAddition(String name, String country, double grams, double calories, double protein, double carb, double mealId)
             throws SQLException {
         queryAdditionByName.setString(1, name);
         ResultSet resultSet = queryAdditionByName.executeQuery();
@@ -383,11 +384,11 @@ public class DataSource {
         }
         queryAddAddition.setString(1, name);
         queryAddAddition.setString(2, country);
-        queryAddAddition.setInt(3, grams);
-        queryAddAddition.setInt(4, calories);
-        queryAddAddition.setInt(5, protein);
-        queryAddAddition.setInt(6, carb);
-        queryAddAddition.setInt(7, mealId);
+        queryAddAddition.setDouble(3, grams);
+        queryAddAddition.setDouble(4, calories);
+        queryAddAddition.setDouble(5, protein);
+        queryAddAddition.setDouble(6, carb);
+        queryAddAddition.setDouble(7, mealId);
 
         int rowsAffected = queryAddAddition.executeUpdate();
         if (rowsAffected != 1) {
@@ -399,5 +400,69 @@ public class DataSource {
         } else {
             throw new SQLException("Cannot get id of vegetable");
         }
+    }
+
+    public boolean addMeal(){
+        Scanner scanner = new Scanner(System.in);
+        try {
+            connection.setAutoCommit(false);
+            System.out.println("Add meat: ");
+            String meatName = scanner.nextLine();
+            System.out.println("Country of origin: ");
+            String meatCountry = scanner.nextLine();
+
+            System.out.println("Grams: ");
+            double meatGrams = Food.foodWeight();
+            System.out.println("Calories: ");
+            double meatCalories = Food.foodWeight();
+            System.out.println("Protein: ");
+            double meatProtein = Food.foodWeight();
+            System.out.println("Carb: ");
+            double meatCarb = Food.foodWeight();
+            int meatId = addMeat(meatName, meatCountry, meatGrams, meatCalories, meatProtein, meatCarb);
+
+            System.out.println("Add vegetable: ");
+            String vegName = scanner.nextLine();
+            System.out.println("Country of origin: ");
+            String vegCountry = scanner.nextLine();
+
+            System.out.println("Grams: ");
+            double vegGrams = Food.foodWeight();
+            System.out.println("Calories: ");
+            double vegCalories = Food.foodWeight();
+            System.out.println("Protein: ");
+            double vegProtein = Food.foodWeight();
+            System.out.println("Carb: ");
+            double vegCarb = Food.foodWeight();
+            int vegId = addVegetable(vegName, vegCountry, vegGrams, vegCalories, vegProtein, vegCarb, meatId);
+
+            System.out.println("Add addition: ");
+            String additionName = scanner.nextLine();
+            System.out.println("Country of origin: ");
+            String additionCountry = scanner.nextLine();
+
+            System.out.println("Grams: ");
+            double additionGrams = Food.foodWeight();
+            System.out.println("Calories: ");
+            double additionCalories = Food.foodWeight();
+            System.out.println("Protein: ");
+            double additionProtein = Food.foodWeight();
+            System.out.println("Carb: ");
+            double additionCarb = Food.foodWeight();
+            int additionId = addAddition(additionName, additionCountry, additionGrams, additionCalories, additionProtein, additionCarb, meatId);
+
+            return true;
+        } catch (Exception e) {
+            try {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }

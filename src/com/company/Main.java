@@ -19,13 +19,13 @@ public class Main {
             return;
         }
 
-        try {
-            source.addMeat("Kolejne miecho", "Polandia", 1, 1, 1, 1);
-            source.addVegetable("Jarzynka", "Polandia", 1, 1, 1, 1, 1);
-            source.addAddition("Dodateczek", "Polandia", 1, 1, 1, 1, 1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            source.addMeat("Kolejne miecho", "Polandia", 1, 1, 1, 1);
+//            source.addVegetable("Jarzynka", "Polandia", 1, 1, 1, 1, 1);
+//            source.addAddition("Dodateczek", "Polandia", 1, 1, 1, 1, 1);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         System.out.println("=| FoodCalculator |=");
         boolean quit = false;
@@ -79,6 +79,13 @@ public class Main {
                     meals = source.chooseMealByMeat(chosenMeal, sortOrder);
                     showMealList(meals);
                     sumUpChosenMeal(meals);
+                    break;
+                case 4:
+                    if (source.addMeal()) {
+                        System.out.println("Meal added successfully");
+                    } else {
+                        System.out.println("Cannot add whole meal. Operation rolled back.");
+                    }
                     break;
                 case 0:
                     quit = true;
