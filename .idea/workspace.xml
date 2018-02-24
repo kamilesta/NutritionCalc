@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcedbf02-b221-4077-864a-aee91c58cd6e" name="Default" comment="" />
+    <list default="true" id="bcedbf02-b221-4077-864a-aee91c58cd6e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DataSource.java" afterPath="$PROJECT_DIR$/src/main/java/model/DataSource.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+            <state relative-caret-position="136">
+              <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -25,22 +27,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/DataSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1291">
-              <caret line="454" column="12" lean-forward="true" selection-start-line="454" selection-start-column="12" selection-end-line="454" selection-end-column="12" />
+            <state relative-caret-position="152">
+              <caret line="408" column="44" lean-forward="true" selection-start-line="408" selection-start-column="44" selection-end-line="408" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#397#398#0" expanded="true" />
                 <element signature="e#430#431#0" expanded="true" />
-                <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-                <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-                <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-                <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-                <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-                <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-                <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+                <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+                <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+                <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+                <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+                <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+                <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+                <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
               </folding>
             </state>
           </provider>
@@ -50,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/foodCalculator.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -60,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Food.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2683">
-              <caret line="161" column="39" lean-forward="true" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
+              <caret line="161" column="39" lean-forward="false" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#518#519#0" expanded="true" />
@@ -240,6 +242,11 @@
             <path>
               <item name="NutritionCalc" type="b2602c69:ProjectViewProjectNode" />
               <item name="NutritionCalc" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NutritionCalc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NutritionCalc" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -262,6 +269,11 @@
               <item name="production" type="462c0819:PsiDirectoryNode" />
               <item name="FoodCalc" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NutritionCalc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NutritionCalc" type="462c0819:PsiDirectoryNode" />
+              <item name="refs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NutritionCalc" type="b2602c69:ProjectViewProjectNode" />
@@ -512,13 +524,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
           </folding>
         </state>
       </provider>
@@ -541,13 +553,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
           </folding>
         </state>
       </provider>
@@ -745,13 +757,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
           </folding>
         </state>
       </provider>
@@ -774,13 +786,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
           </folding>
         </state>
       </provider>
@@ -886,13 +898,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
           </folding>
         </state>
       </provider>
@@ -1048,7 +1060,7 @@
     <entry file="file://$PROJECT_DIR$/foodCalculator.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1064,7 +1076,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Food.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2683">
-          <caret line="161" column="39" lean-forward="true" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
+          <caret line="161" column="39" lean-forward="false" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#518#519#0" expanded="true" />
@@ -1111,31 +1123,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/DataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1291">
-          <caret line="454" column="12" lean-forward="true" selection-start-line="454" selection-start-column="12" selection-end-line="454" selection-end-column="12" />
+        <state relative-caret-position="152">
+          <caret line="408" column="44" lean-forward="true" selection-start-line="408" selection-start-column="44" selection-end-line="408" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#397#398#0" expanded="true" />
             <element signature="e#430#431#0" expanded="true" />
-            <marker date="1519477441688" expanded="true" signature="1125:1138" ph=" SELECT statement" />
-            <marker date="1519477441688" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
-            <marker date="1519477441688" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
-            <marker date="1519477441688" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
-            <marker date="1519477441688" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="1125:1138" ph=" SELECT statement" />
+            <marker date="1519479649666" expanded="true" signature="1208:1296" ph=" SELECT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="1361:1444" ph=" SELECT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="1513:1600" ph=" SELECT statement (ADDITIONS)" />
+            <marker date="1519479649666" expanded="true" signature="3294:3535" ph=" INSERT statement (MEATS)" />
+            <marker date="1519479649666" expanded="true" signature="3603:3876" ph=" INSERT statement (VEGETABLES)" />
+            <marker date="1519479649666" expanded="true" signature="3943:4215" ph=" INSERT statement (ADDITIONS)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

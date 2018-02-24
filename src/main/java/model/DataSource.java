@@ -452,7 +452,7 @@ public class DataSource {
             double additionCarb = Food.foodWeight();
             addAddition(additionName, additionCountry, additionGrams, additionCalories, additionProtein, additionCarb, meatId);
             connection.commit();
-            
+
             return true;
         } catch (Exception e) {
             try {
