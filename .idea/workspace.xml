@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcedbf02-b221-4077-864a-aee91c58cd6e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_45_bin.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/FoodCalc.iml" afterPath="$PROJECT_DIR$/FoodCalc.iml" />
-      <change beforePath="$PROJECT_DIR$/foodCalculator.sql" afterPath="$PROJECT_DIR$/foodCalculator.sql" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/model/Additions.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/model/DataSource.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/model/Food.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/model/Meat.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/model/Vegetables.java" afterPath="" />
-    </list>
+    <list default="true" id="bcedbf02-b221-4077-864a-aee91c58cd6e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
