@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static model.DataSource.getConnection;
 import static model.DataSource.selectAllFrom;
@@ -84,7 +85,7 @@ public class Food {
 
     @Override
     public String toString() {
-        if (name == null){
+        if (name == null) {
             return null;
         }
         StringBuilder sb = new StringBuilder(name);
@@ -98,32 +99,32 @@ public class Food {
         sb.append(calories);
         sb.append(" | Protein: ");
         sb.append(protein);
-        sb.append(" | Carb:" );
+        sb.append(" | Carb:");
         sb.append(carb);
         return sb.toString();
     }
 
-    public static void showMealList(List<Food> foodList){
-        if (foodList == null){
+    public static void showMealList(List<Food> foodList) {
+        if (foodList == null) {
             System.out.println("No meal assigned to this meat.");
             return;
         }
-        System.out.println("We propose meal of:");
-        for (Food food : foodList){
+//        System.out.println("We propose meal of:");
+        for (Food food : foodList) {
             if (food.getName() != null) {
                 System.out.println("\t- " + food.getName());
             }
         }
     }
 
-    public static void sumUpChosenMeal(List<Food> foodList){
-        if (foodList == null){
+    public static void sumUpChosenMeal(List<Food> foodList) {
+        if (foodList == null) {
             return;
         }
         double calories = 0;
         double protein = 0;
         double carb = 0;
-        for (Food food : foodList){
+        for (Food food : foodList) {
             if (food.getName() != null) {
                 calories += ((food.getChosenGrams() / food.getGrams()) * food.getCalories());
                 protein += ((food.getChosenGrams() / food.getGrams()) * food.getProtein());
@@ -135,7 +136,7 @@ public class Food {
         System.out.format(Locale.ENGLISH, "%.2f%n", calories);
         System.out.print("\tProtein: ");
         System.out.format(Locale.ENGLISH, "%.2f%n", protein);
-        System.out.print("\tCarb: " );
+        System.out.print("\tCarb: ");
         System.out.format(Locale.ENGLISH, "%.2f%n", carb);
     }
 
@@ -159,14 +160,14 @@ public class Food {
         boolean isValid = false;
         while (!(isOnList && isValid)) {
             input = scanner.nextLine();
-            if (foodList.contains(input.toLowerCase())){
+            if (foodList.contains(input) || foodList.contains(input.substring(0, 1).toUpperCase() + input.substring(1))) {
                 isOnList = true;
             } else {
                 System.out.println(input + " is not in our database. Try something else.");
             }
             try {
                 Integer.parseInt(input);
-                System.out.println("Wrong value.");
+//                System.out.println("Wrong value.");
             } catch (NumberFormatException e) {
                 isValid = true;
             }

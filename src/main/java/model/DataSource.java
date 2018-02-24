@@ -83,12 +83,12 @@ public class DataSource {
 
     public static final String STM_ADD_VEGETABLE =
             "INSERT INTO " + VEGETABLES_TABLE + " ( " + NAME_COLUMN + ", " + COUNTRY_COLUMN + ", " + GRAMS_COLUMN + ", " +
-                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", "+ MEAL_ID_COLUMN + ") " +
+                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", " + MEAL_ID_COLUMN + ") " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     public static final String STM_ADD_ADDITION =
             "INSERT INTO " + ADDITIONS_TABLE + " ( " + NAME_COLUMN + ", " + COUNTRY_COLUMN + ", " + GRAMS_COLUMN + ", " +
-                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", "+ MEAL_ID_COLUMN + ") " +
+                    CALORIES_COLUMN + ", " + PROTEIN_COLUMN + ", " + CARB_COLUMN + ", " + MEAL_ID_COLUMN + ") " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 
@@ -101,7 +101,7 @@ public class DataSource {
 
     public boolean open() {
         Properties properties = new Properties();
-        try (FileInputStream openFile = new FileInputStream("C:\\Users\\User\\Desktop\\projects\\foodDB\\FoodCalc\\foodcalc.properties")) {
+        try (FileInputStream openFile = new FileInputStream("R:\\Programowanie\\_Java\\NutritionCalc\\NutritionCalc\\foodcalc.properties")) {
             properties.load(openFile);
             dbUrl = properties.getProperty("dburl");
             user = properties.getProperty("user");
@@ -171,7 +171,8 @@ public class DataSource {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(STM_SELECT_FROM + tableName)) {
             while (resultSet.next()) {
-                foodList.add(resultSet.getString("name").toLowerCase());
+                String name = resultSet.getString("name").toLowerCase();
+                foodList.add(name.substring(0, 1).toUpperCase() + name.substring(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -292,7 +293,7 @@ public class DataSource {
                 vegetableName = resultSet.getString(2);
                 additionName = resultSet.getString(3);
             }
-            if (meatName.equals("")){
+            if (meatName.equals("")) {
                 return null;
             }
             System.out.println("How much " + meatName + " do you want?");
@@ -402,7 +403,7 @@ public class DataSource {
         }
     }
 
-    public boolean addMeal(){
+    public boolean addMeal() {
         Scanner scanner = new Scanner(System.in);
         try {
             connection.setAutoCommit(false);
@@ -434,7 +435,7 @@ public class DataSource {
             double vegProtein = Food.foodWeight();
             System.out.println("Carb: ");
             double vegCarb = Food.foodWeight();
-            int vegId = addVegetable(vegName, vegCountry, vegGrams, vegCalories, vegProtein, vegCarb, meatId);
+            addVegetable(vegName, vegCountry, vegGrams, vegCalories, vegProtein, vegCarb, meatId);
 
             System.out.println("Add addition: ");
             String additionName = scanner.nextLine();
@@ -449,8 +450,9 @@ public class DataSource {
             double additionProtein = Food.foodWeight();
             System.out.println("Carb: ");
             double additionCarb = Food.foodWeight();
-            int additionId = addAddition(additionName, additionCountry, additionGrams, additionCalories, additionProtein, additionCarb, meatId);
-
+            addAddition(additionName, additionCountry, additionGrams, additionCalories, additionProtein, additionCarb, meatId);
+            connection.commit();
+            
             return true;
         } catch (Exception e) {
             try {

@@ -2,7 +2,6 @@ package com.company;
 
 import model.*;
 
-import java.sql.SQLException;
 import java.util.*;
 
 import static model.Food.*;
@@ -55,16 +54,17 @@ public class Main {
                     sumUpChosenMeal(meals);
                     break;
                 case 3:
-                    System.out.println("Choose meat that you want your meal with from. Do you want also meal with lowest calories? ");
+                    System.out.println("Choose meat that you want your meal with. Do you want also meal with lowest calories? ");
                     List<String> meatList = DataSource.selectAllFrom(DataSource.getConnection(), DataSource.MEATS_TABLE);
                     for (String meat : meatList) {
                         System.out.println("\t" + meat);
                     }
-                    String chosenMeal = Food.foodName(DataSource.MEATS_TABLE);
                     scanner.nextLine();
+                    String chosenMeal = Food.foodName(DataSource.MEATS_TABLE);
                     System.out.println("Do you choose lowest calories?");
                     String sortOrder = scanner.nextLine();
                     meals = source.chooseMealByMeat(chosenMeal, sortOrder);
+                    System.out.println("We propose meal of:");
                     showMealList(meals);
                     sumUpChosenMeal(meals);
                     break;

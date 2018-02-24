@@ -20,9 +20,12 @@ INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealI
 INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (2, 'Corn', 'USA', 100, 92, 3, 21, 1);
 INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (3, 'Carrot', 'Czech', 150,	45, 1, 10, 2);
 INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (4, 'Onion', 'Poland', 210,	80, 2, 18, 4);
+INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (5, 'Beans', 'Germany', 50,	17, 1, 3, 1);
+INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (6, 'Asparagus', 'Germany', 96,18, 1, 3, 2);
+INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (7, 'Cauliflower', 'Latvia', 120,	30, 3, 6, 3);
+INSERT INTO vegetables (id, name, country, grams, calories, protein, carb, mealId) VALUES (8, 'Cucumbers', 'Germany', 50,	6, 0, 1, 4);
 
 drop table if exists meats;
-drop table if exists meat;
 
 CREATE TABLE meats (
 	id int(11) not null auto_increment,
@@ -59,3 +62,7 @@ INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId
 INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (2, 'Macaroni', 'Italy', 140,	155, 5, 32, 4);
 INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (3, 'Wheat', 'Poland', 68,	245, 17, 34, 2);
 INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (4, 'Patatoes', 'Poland', 100,	100, 2, 22, 1);
+INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (5, 'Beetroots', 'France', 165, 1, 12, 1, 1);
+INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (6, 'Cornflakes', 'USA', 165, 1, 12, 1, 2);
+INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (7, 'Noodles', 'USA', 165, 1, 12, 1, 3);
+INSERT INTO additions (id, name, country, grams, calories, protein, carb, mealId) VALUES (8, 'Oatmeal', 'Slovakia', 236, 150, 5, 26, 4);
